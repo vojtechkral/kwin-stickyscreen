@@ -1,4 +1,7 @@
 
+var SHORTCUT="Meta+Tab";
+
+
 function clientSwitchable(c) {
 	return (c.normalWindow || c.dialog || c.splash || c.utility);
 }
@@ -19,7 +22,7 @@ function StickyScreen() {
 
 	this.clientActivated(workspace.activeClient);
 
-	registerShortcut("foooooooo4", "foooooooo4", "Meta+I", function() {
+	registerShortcut("StickyScreenSwtich", "StickyScreenSwtich", SHORTCUT, function() {
 		self.switchScreen();
 	});
 }
@@ -41,11 +44,14 @@ StickyScreen.prototype.clientActivated = function(client) {
 
 StickyScreen.prototype.addClient = function(client) {
 	if (!clientSwitchable(client)) return;
-	print("Add client: ", client.caption);
+
+	var self = this;
 	client.screenChanged.connect(function() {
 		client.onAllDesktops = client.screen > 0;
-		print("screenChanged: ", client, client.onAllDesktops);
+		self.clientActivated(client);
 	});
+
+	client.onAllDesktops = client.screen > 0;  // For already placed windows
 };
 
 StickyScreen.prototype.lastActive = function(screen, desk) {

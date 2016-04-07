@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=StickyScreen
+Comment=Makes windows on external screen sticky, provides sane screen switching keyboard shortcut.
+Type=Service
+
+X-Plasma-API=javascript
+X-Plasma-MainScript=code/stickyscreen.js
+
+X-KDE-PluginInfo-Author=Vojtech Kral
+X-KDE-PluginInfo-Email=vojtech@kral.hk
+X-KDE-PluginInfo-Name=hk.kral.stickyscreen
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-License=GPL
+
+X-KDE-ServiceTypes=KWin/Script
